@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Volo.Abp.TenantManagement.Web": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "applicationUrl": "https://localhost:50266;http://localhost:50267",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

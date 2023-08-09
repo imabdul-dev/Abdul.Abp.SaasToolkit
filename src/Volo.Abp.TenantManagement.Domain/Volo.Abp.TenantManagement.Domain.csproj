@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.1;net7.0</TargetFrameworks>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Volo.Abp.TenantManagement</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Ddd.Domain" Version="7.3.2" />
+    <ProjectReference Include="..\Volo.Abp.TenantManagement.Domain.Shared\Volo.Abp.TenantManagement.Domain.Shared.csproj" />
+    <PackageReference Include="Volo.Abp.Data" Version="7.3.2" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.Domain" Version="7.3.2" />
+    <PackageReference Include="Volo.Abp.MultiTenancy" Version="7.3.2" />
+    <PackageReference Include="Volo.Abp.Caching" Version="7.3.2" />
+    <PackageReference Include="Volo.Abp.AutoMapper" Version="7.3.2" />
+  </ItemGroup>
+</Project>

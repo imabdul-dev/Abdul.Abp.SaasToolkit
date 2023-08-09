@@ -16,7 +16,7 @@ services:
   tenant-management:
     build:
       context: ../../
-      dockerfile: templates/service/host/Volo.TenantManagement.Host/Dockerfile
+      dockerfile: templates/service/host/Volo.Abp.TenantManagement.Host/Dockerfile
     depends_on:
       - sqlserver
       - identity-server

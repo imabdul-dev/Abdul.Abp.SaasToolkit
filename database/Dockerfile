@@ -1,18 +1,18 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:3.0-buster AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:7.0 AS build
 COPY . .
 
 WORKDIR /templates/service/host/IdentityServerHost
 RUN dotnet restore
 RUN dotnet ef migrations script -i -o migrations-IdentityServerHost.sql
 
-WORKDIR /templates/service/host/Volo.TenantManagement.Host
+WORKDIR /templates/service/host/Volo.Abp.TenantManagement.Host
 RUN dotnet restore
 RUN dotnet ef migrations script -i -o migrations-TenantManagement.sql
 
 FROM mcr.microsoft.com/mssql-tools AS final
 WORKDIR /src
 COPY --from=build /templates/service/host/IdentityServerHost/migrations-IdentityServerHost.sql migrations-IdentityServerHost.sql
-COPY --from=build /templates/service/host/Volo.TenantManagement.Host/migrations-TenantManagement.sql migrations-TenantManagement.sql
+COPY --from=build /templates/service/host/Volo.Abp.TenantManagement.Host/migrations-TenantManagement.sql migrations-TenantManagement.sql
 COPY --from=build /templates/service/database/entrypoint.sh .
 RUN /bin/bash -c "sed -i $'s/\r$//' entrypoint.sh"
 RUN chmod +x ./entrypoint.sh
